@@ -1,0 +1,4 @@
+node_modules/
+*.json
+postcss.config.js
+tailwind.config.js
