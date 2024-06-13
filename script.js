@@ -1,7 +1,10 @@
 const url = "https://api.github.com/users/";
 async function getProfile(user) {
+  loading.classList.remove("hidden");
+  card.classList.remove("visible");
   const res = await fetch(url + user);
   const resData = await res.json();
+  loading.classList.add('hidden');
   return resData;
 }
 export default async function renderProfile() {
@@ -19,7 +22,8 @@ export default async function renderProfile() {
             </div>
           </div>
           `;
-  /* card.innerHTML = ` <div class="left-section">
+  /* 
+  card.innerHTML = ` <div class="left-section">
   <img
   src=""
   alt="profile photo"
@@ -34,10 +38,14 @@ export default async function renderProfile() {
   <i class="fa-solid fa-heart"><span>100</span></i>
   <i class="fa-solid fa-message"><span>100</span></i>
   </div>
-  </div>`;**/
+  </div>`;
+  **/
+ card.classList.add('visible')
+
 }
 const form = document.querySelector(".js-form");
-const card = document.querySelector(".card");
+const card = document.querySelector("#card");
+const loading = document.querySelector("#loading");
 const input = document.querySelector(".js-input");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
