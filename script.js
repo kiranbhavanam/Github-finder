@@ -4,34 +4,43 @@ async function getProfile(user) {
   const resData = await res.json();
   return resData;
 }
- export default async function renderProfile(){
-
+export default async function renderProfile() {
   const user = input.value;
   const userDetails = await getProfile(user);
   console.log(userDetails);
-  card.innerHTML = ` <div class="left-section">
+  card.innerHTML = `<div  class="w-1/2  mx-auto flex items-center gap-10  bg-[#4f4f4f] py-5  shadow-sm shadow-black" >
+            <div class="border-2 rounded-full w-[200px] overflow-hidden mx-auto">
+              <img src=${userDetails.avatar_url} alt="" >
+            </div>
+            <div class="mx-auto w-1/3 ">
+              <p class="font-mono font-semibold text-white ">${userDetails.name}</p>
+              <p>${userDetails.bio}</p>
+              <p><a href=${userDetails.html_url} target="_blank">${userDetails.html_url}</a></p>
+            </div>
+          </div>
+          `;
+  /* card.innerHTML = ` <div class="left-section">
   <img
-  src="${userDetails.avatar_url}"
+  src=""
   alt="profile photo"
   />
   </div>
   <div class="right-section">
-  <h3>${userDetails.name}</h3>
-  <p class="bio">${userDetails.bio}</p>
-  <p class="desc"><a href=${userDetails.html_url} target="_blank">${userDetails.html_url}</a></p>
+  <h3>$</h3>
+  <p class="bio"></p>
+  <p class="desc"></p>
   <div class="profile-stats">
   <i class="fa-solid fa-eye"><span>100</span></i>
   <i class="fa-solid fa-heart"><span>100</span></i>
   <i class="fa-solid fa-message"><span>100</span></i>
   </div>
-  </div>`;
+  </div>`;**/
 }
-const input = document.querySelector("input");
-const form = document.querySelector("form");
+const form = document.querySelector(".js-form");
 const card = document.querySelector(".card");
+const input = document.querySelector(".js-input");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  //console.log(e);
+  card.scrollIntoView({ behavior: "smooth" });
   renderProfile();
-  });
-  
+});
