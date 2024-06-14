@@ -11,14 +11,14 @@ export default async function renderProfile() {
   const user = input.value;
   const userDetails = await getProfile(user);
   console.log(userDetails);
-  card.innerHTML = `<div  class="w-1/2  mx-auto flex items-center gap-10  bg-[#4f4f4f] py-5  shadow-sm shadow-black" >
+  card.innerHTML = `<div  class="w-1/2 h-3/4 my-10  mx-auto flex items-center gap-10  bg-[#4f4f4f] py-5  shadow-sm shadow-black" >
             <div class="border-2 rounded-full w-[200px] overflow-hidden mx-auto">
               <img src=${userDetails.avatar_url} alt="" >
             </div>
             <div class="mx-auto w-1/3 ">
               <p class="font-mono font-semibold text-white ">${userDetails.name}</p>
               <p>${userDetails.bio}</p>
-              <p><a href=${userDetails.html_url} target="_blank">${userDetails.html_url}</a></p>
+              <p class="overflow-hidden"><a href=${userDetails.html_url} target="_blank">${userDetails.html_url}</a></p>
             </div>
           </div>
           `;
