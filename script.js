@@ -4,7 +4,7 @@ async function getProfile(user) {
   card.classList.remove("visible");
   const res = await fetch(url + user);
   const resData = await res.json();
-  loading.classList.add('hidden');
+  loading.classList.add("hidden");
   return resData;
 }
 export default async function renderProfile() {
@@ -15,10 +15,10 @@ export default async function renderProfile() {
             <div class="border-2 rounded-full w-[200px] overflow-hidden mx-auto">
               <img src=${userDetails.avatar_url} alt="" >
             </div>
-            <div class="mx-auto w-1/3 ">
-              <p class="font-mono font-semibold text-white ">${userDetails.name}</p>
-              <p>${userDetails.bio}</p>
-              <p class="overflow-hidden"><a href=${userDetails.html_url} target="_blank">${userDetails.html_url}</a></p>
+            <div class="mx-auto text-white  ">
+              <p class="font-mono font-semibold ">Name: ${userDetails.name}</p>
+              <p>Repos: ${userDetails.public_repos}</p>
+              <p class="break-words"><a href=${userDetails.html_url} target="_blank">Url: ${userDetails.html_url}</a></p>
             </div>
           </div>
           `;
@@ -40,8 +40,7 @@ export default async function renderProfile() {
   </div>
   </div>`;
   **/
- card.classList.add('visible')
-
+  card.classList.add("visible");
 }
 const form = document.querySelector(".js-form");
 const card = document.querySelector("#card");
@@ -51,4 +50,5 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   card.scrollIntoView({ behavior: "smooth" });
   renderProfile();
+  input.value = "";
 });
